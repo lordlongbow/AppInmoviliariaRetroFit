@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
@@ -22,22 +23,27 @@ import com.example.inmobiliariaac.modelos.Propietario;
 import java.util.List;
 
 public class ApiRest {
-    private static final String URL_BASE = "http://38.0.101.76:8080/inmobiliariaac/";
+    private static final String URL_BASE = "http://38.0.101.76:8080/";
     //Intentar guardar ip en una variable tipo secret consultar
-    private final String URL_BASE_LOCAL = "http://38.0.101.76:8080/inmobiliariaac/";
+    private final String URL_BASE_LOCAL = "http://38.0.101.76:8080/";
+
     private static EndPointsApi endPointsApi;
 
-    private static EndPointsApi getEndPointApi() {
+    public static EndPointsApi getEndPointApi() {
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(URL_BASE)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         endPointsApi = retrofit.create(EndPointsApi.class);
+
         return endPointsApi;
     }
 
-    private interface EndPointsApi {
+        public interface EndPointsApi {
+
+            @GET()
+        Call<EndPointsApi> getData();
 
         //Propietario
 
@@ -45,10 +51,10 @@ public class ApiRest {
         Call<String> login(@Body Propietario propietario);
 
         @GET("api/propietario/perfil")
-        Call<String> perfil(@Body Propietario propietario, @Header("Authorization") String token);
+        Call<Propietario> perfil(@Header("Authorization") String token);
 
         @PUT("api/propietario/actualizar/{id}")
-        Call<String> actualizar(@Header("Authorization") String token, @Path("id") int id, @Body Propietario propietario);
+        Call<Propietario> actualizar(@Header("Authorization") String token, @Path("id") int id, @Body Propietario propietario);
         /*
         encontrar equivalenete a iformfile o mandar foto como bitmap
         @PUT("api/propietario/actualizar/foto/{id}")
@@ -60,7 +66,7 @@ public class ApiRest {
 
         //Inmueble
 
-        @GET("api/inmueble/misInmuebles")
+        @GET("api/inmueble/")
         Call<List<Inmueble>> misInmuebles(@Header("Authorization") String token);
 
         @PUT("api/inmueble/cambioDisponibilidad/{id}")
@@ -69,7 +75,7 @@ public class ApiRest {
         //Contrato
 
         @GET("api/contrato/")
-        Call<List<Contrato>> getMisContratos(@Header("Authorization") String token, @Body Propietario propietario);
+        Call<List<Contrato>> getMisContratos(@Header("Authorization") String token, @Body Inmueble inmueble);
 
         @GET("api/contrato/{id}")
         Call<Contrato> ObtenerContrato(@Header("Authorization") String token, @Path("id") int id);

@@ -4,89 +4,105 @@ import java.util.Objects;
 
 public class Propietario {
 
-    private int id;
-    private Long dni;
-    private String nombre;
-    private String apellido;
-    private String email;
-    private String contraseña;
-    private String telefono;
-    private int avatar;
+    private int Id;
+    private Long Dni;
+    private String Nombre;
+    private String Apellido;
+    private String Email;
+    private String Contraseña;
+    private String Telefono;
+    private String Foto;
 
-    public Propietario(){}
-    public Propietario(int id, Long dni, String nombre, String apellido, String email, String contraseña, String telefono, int avatar) {
-        this.id = id;
-        this.dni = dni;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.contraseña = contraseña;
-        this.telefono = telefono;
-        this.avatar=avatar;
+    public Propietario() {
+    }
+
+    public Propietario(int id, Long dni, String nombre, String apellido, String email, String contraseña, String telefono, String foto) {
+        Id = id;
+        Dni = dni;
+        Nombre = nombre;
+        Apellido = apellido;
+        Email = email;
+        Contraseña = contraseña;
+        Telefono = telefono;
+        Foto = foto;
     }
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        Id = id;
     }
 
     public Long getDni() {
-        return dni;
+        return Dni;
     }
 
     public void setDni(Long dni) {
-        this.dni = dni;
+        Dni = dni;
     }
 
     public String getNombre() {
-        return nombre;
+        return Nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        Nombre = nombre;
     }
 
     public String getApellido() {
-        return apellido;
+        return Apellido;
     }
 
     public void setApellido(String apellido) {
-        this.apellido = apellido;
+        Apellido = apellido;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        Email = email;
     }
 
     public String getContraseña() {
-        return contraseña;
+        return Contraseña;
     }
 
     public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+        Contraseña = contraseña;
     }
 
     public String getTelefono() {
-        return telefono;
+        return Telefono;
     }
 
     public void setTelefono(String telefono) {
-        this.telefono = telefono;
+        Telefono = telefono;
     }
 
-    public int getAvatar() {
-        return avatar;
+    public String getFoto() {
+        return Foto;
     }
 
-    public void setAvatar(int avatar) {
-        this.avatar = avatar;
+    public void setFoto(String foto) {
+        Foto = foto;
+    }
+
+    @Override
+    public String toString() {
+        return "Propietario{" +
+                "Id=" + Id +
+                ", Dni=" + Dni +
+                ", Nombre='" + Nombre + '\'' +
+                ", Apellido='" + Apellido + '\'' +
+                ", Email='" + Email + '\'' +
+                ", Contraseña='" + Contraseña + '\'' +
+                ", Telefono='" + Telefono + '\'' +
+                ", Foto='" + Foto + '\'' +
+                '}';
     }
 
     @Override
@@ -94,11 +110,11 @@ public class Propietario {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Propietario that = (Propietario) o;
-        return id == that.id;
+        return Id == that.Id && Objects.equals(Dni, that.Dni) && Objects.equals(Nombre, that.Nombre) && Objects.equals(Apellido, that.Apellido) && Objects.equals(Email, that.Email) && Objects.equals(Contraseña, that.Contraseña) && Objects.equals(Telefono, that.Telefono) && Objects.equals(Foto, that.Foto);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(Id, Dni, Nombre, Apellido, Email, Contraseña, Telefono, Foto);
     }
 }

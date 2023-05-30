@@ -1,60 +1,75 @@
 package com.example.inmobiliariaac.modelos;
 
+import java.util.Date;
+
 public class Pago {
 
-    private int idPago;
-    private int numero;
-    private Contrato contrato;
-    private double importe;
-    private String fechaDePago;
+    private int PagoId;
+    private float Monto;
+    private Contrato Contrato;
+    private Date Fecha;
+    private int ContratoId;
 
-    public Pago() {}
-
-    public Pago(int idPago, int numero, Contrato contrato, double importe, String fechaDePago) {
-        this.idPago = idPago;
-        this.numero = numero;
-        this.contrato = contrato;
-        this.importe = importe;
-        this.fechaDePago = fechaDePago;
+    public Pago() {
     }
 
-    public int getIdPago() {
-        return idPago;
+    public Pago(int pagoId, float monto, com.example.inmobiliariaac.modelos.Contrato contrato, Date fecha, int contratoId) {
+        PagoId = pagoId;
+        Monto = monto;
+        Contrato = contrato;
+        Fecha = fecha;
+        ContratoId = contratoId;
     }
 
-    public void setIdPago(int idPago) {
-        this.idPago = idPago;
+
+    public int getPagoId() {
+        return PagoId;
     }
 
-    public int getNumero() {
-        return numero;
+    public void setPagoId(int pagoId) {
+        PagoId = pagoId;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public float getMonto() {
+        return Monto;
     }
 
-    public Contrato getContrato() {
-        return contrato;
+    public void setMonto(float monto) {
+        Monto = monto;
     }
 
-    public void setContrato(Contrato contrato) {
-        this.contrato = contrato;
+    public com.example.inmobiliariaac.modelos.Contrato getContrato() {
+        return Contrato;
     }
 
-    public double getImporte() {
-        return importe;
+    public void setContrato(com.example.inmobiliariaac.modelos.Contrato contrato) {
+        Contrato = contrato;
     }
 
-    public void setImporte(double importe) {
-        this.importe = importe;
+    public Date getFecha() {
+        return Fecha;
     }
 
-    public String getFechaDePago() {
-        return fechaDePago;
+    public void setFecha(Date fecha) {
+        Fecha = fecha;
     }
 
-    public void setFechaDePago(String fechaDePago) {
-        this.fechaDePago = fechaDePago;
+    public int getContratoId() {
+        return ContratoId;
+    }
+
+    public void setContratoId(int contratoId) {
+        ContratoId = contratoId;
+    }
+
+    @Override
+    public String toString() {
+        return "Pago{" +
+                "PagoId=" + PagoId +
+                ", Monto=" + Monto +
+                ", Contrato=" + Contrato +
+                ", Fecha=" + Fecha +
+                ", ContratoId=" + ContratoId +
+                '}';
     }
 }

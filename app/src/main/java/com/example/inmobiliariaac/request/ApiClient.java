@@ -10,7 +10,7 @@ import com.example.inmobiliariaac.modelos.Propietario;
 import java.util.ArrayList;
 
 public class ApiClient {
-    private ArrayList<Propietario> propietarios=new ArrayList<>();
+    /*private ArrayList<Propietario> propietarios=new ArrayList<>();
     private ArrayList<Inquilino> inquilinos=new ArrayList<>();
     private ArrayList<Inmueble> inmuebles=new ArrayList<>();
     private ArrayList<Contrato> contratos=new ArrayList<>();
@@ -163,5 +163,5 @@ public class ApiClient {
 
 
 
-    }
+    }*/
 }

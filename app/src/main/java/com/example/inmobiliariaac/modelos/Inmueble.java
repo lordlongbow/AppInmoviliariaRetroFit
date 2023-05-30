@@ -4,114 +4,136 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Inmueble implements Serializable {
-    private int idInmueble;
-    private String direccion;
-    private String uso;
-    private String tipo;
-    private int ambientes;
-    private double precio;
-    private Propietario propietario;
-    //En falso significa que el innmueble no está disponible por alguna falla en el mismo.
-    private boolean estado=true;
-    private String imagen;
+    private int InmuebleId;
+    private String Direccion;
+    private float Precio;
+    private int CantAambientes;
+    private int Latitud;
+    private int Longitud;
+    private Tipo Tipo;
+    private Uso Uso;
+    private boolean Disponibilidad;
+    private int PropietarioId;
+    private String Foto;
 
-    public Inmueble(int idInmueble, String direccion, String uso, String tipo, int ambientes, double precio, Propietario propietario, boolean estado, String imagen) {
-        this.idInmueble = idInmueble;
-        this.direccion = direccion;
-        this.uso = uso;
-        this.tipo = tipo;
-        this.ambientes = ambientes;
-        this.precio = precio;
-        this.propietario = propietario;
-        this.estado = estado;
-        this.imagen = imagen;
-    }
-    public Inmueble() {
+    public Inmueble(){};
 
-    }
-    public int getIdInmueble() {
-        return idInmueble;
+    public Inmueble(int inmuebleId, String direccion, float precio, int cantAambientes, int latitud, int longitud, Tipo Tipo, Uso Uso, boolean disponibilidad, int propietarioId, String foto) {
+        InmuebleId = inmuebleId;
+        Direccion = direccion;
+        Precio = precio;
+        CantAambientes = cantAambientes;
+        Latitud = latitud;
+        Longitud = longitud;
+        Tipo = Tipo;
+        Uso = Uso;
+        Disponibilidad = disponibilidad;
+        PropietarioId = propietarioId;
+        Foto = foto;
     }
 
-    public void setIdInmueble(int idInmueble) {
-        this.idInmueble = idInmueble;
+    public int getInmuebleId() {
+        return InmuebleId;
+    }
+
+    public void setInmuebleId(int inmuebleId) {
+        InmuebleId = inmuebleId;
     }
 
     public String getDireccion() {
-        return direccion;
+        return Direccion;
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion;
+        Direccion = direccion;
     }
 
-    public String getUso() {
-        return uso;
+    public float getPrecio() {
+        return Precio;
     }
 
-    public void setUso(String uso) {
-        this.uso = uso;
+    public void setPrecio(float precio) {
+        Precio = precio;
     }
 
-    public String getTipo() {
-        return tipo;
+    public int getCantAambientes() {
+        return CantAambientes;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setCantAambientes(int cantAambientes) {
+        CantAambientes = cantAambientes;
     }
 
-    public int getAmbientes() {
-        return ambientes;
+    public int getLatitud() {
+        return Latitud;
     }
 
-    public void setAmbientes(int ambientes) {
-        this.ambientes = ambientes;
+    public void setLatitud(int latitud) {
+        Latitud = latitud;
     }
 
-    public double getPrecio() {
-        return precio;
+    public int getLongitud() {
+        return Longitud;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setLongitud(int longitud) {
+        Longitud = longitud;
     }
 
-    public Propietario getPropietario() {
-        return propietario;
+    public Tipo getTipo() {
+        return Tipo;
     }
 
-    public void setPropietario(Propietario propietario) {
-        this.propietario = propietario;
+    public void setTipo(Tipo tipo) {
+        Tipo = tipo;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public Uso getUso() {
+        return Uso;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setUso(Uso uso) {
+        Uso = uso;
     }
 
-    public String getImagen() {
-        return imagen;
+    public boolean isDisponibilidad() {
+        return Disponibilidad;
     }
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
+    public void setDisponibilidad(boolean disponibilidad) {
+        Disponibilidad = disponibilidad;
+    }
+
+    public int getPropietarioId() {
+        return PropietarioId;
+    }
+
+    public void setPropietarioId(int propietarioId) {
+        PropietarioId = propietarioId;
+    }
+
+    public String getFoto() {
+        return Foto;
+    }
+
+    public void setFoto(String foto) {
+        Foto = foto;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Inmueble inmueble = (Inmueble) o;
-        return idInmueble == inmueble.idInmueble;
+    public String toString() {
+        return "Inmueble{" +
+                "InmuebleId=" + InmuebleId +
+                ", Direccion='" + Direccion + '\'' +
+                ", Precio=" + Precio +
+                ", CantAambientes=" + CantAambientes +
+                ", Latitud=" + Latitud +
+                ", Longitud=" + Longitud +
+                ", Tipo=" + Tipo +
+                ", Uso=" + Uso +
+                ", Disponibilidad=" + Disponibilidad +
+                ", PropietarioId=" + PropietarioId +
+                ", Foto='" + Foto + '\'' +
+                '}';
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idInmueble);
-    }
-
 }

@@ -2,99 +2,92 @@ package com.example.inmobiliariaac.modelos;
 
 public class Inquilino {
 
-    private int idInquilino;
-    private Long DNI;
-    private String nombre;
-    private String apellido;
-    private String lugarDeTrabajo;
-    private String email;
-    private String telefono;
-    private String nombreGarante;
-    private String telefonoGarante;
+    private int Id;
+    private Long Dni;
+    private String Nombre;
+    private String Apellido;
+    private String Telefono;
+    private String Domicilio;
+    private String Foto;
 
     public Inquilino() {}
 
-    public Inquilino(int idInquilino, Long DNI, String nombre, String apellido, String lugarDeTrabajo, String email, String telefono, String nombreGarante, String telefonoGarante) {
-        this.idInquilino = idInquilino;
-        this.DNI = DNI;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.lugarDeTrabajo = lugarDeTrabajo;
-        this.email = email;
-        this.telefono = telefono;
-        this.nombreGarante = nombreGarante;
-        this.telefonoGarante = telefonoGarante;
+    public Inquilino(int id, Long dni, String nombre, String apellido, String telefono, String domicilio, String foto) {
+        Id = id;
+        Dni = dni;
+        Nombre = nombre;
+        Apellido = apellido;
+        Telefono = telefono;
+        Domicilio = domicilio;
+        Foto = foto;
     }
 
-    public int getIdInquilino() {
-        return idInquilino;
+    public int getId() {
+        return Id;
     }
 
-    public void setIdInquilino(int idInquilino) {
-        this.idInquilino = idInquilino;
+    public void setId(int id) {
+        Id = id;
     }
 
-    public Long getDNI() {
-        return DNI;
+    public Long getDni() {
+        return Dni;
     }
 
-    public void setDNI(Long DNI) {
-        this.DNI = DNI;
+    public void setDni(Long dni) {
+        Dni = dni;
     }
 
     public String getNombre() {
-        return nombre;
+        return Nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        Nombre = nombre;
     }
 
     public String getApellido() {
-        return apellido;
+        return Apellido;
     }
 
     public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getLugarDeTrabajo() {
-        return lugarDeTrabajo;
-    }
-
-    public void setLugarDeTrabajo(String lugarDeTrabajo) {
-        this.lugarDeTrabajo = lugarDeTrabajo;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+        Apellido = apellido;
     }
 
     public String getTelefono() {
-        return telefono;
+        return Telefono;
     }
 
     public void setTelefono(String telefono) {
-        this.telefono = telefono;
+        Telefono = telefono;
     }
 
-    public String getNombreGarante() {
-        return nombreGarante;
+    public String getDomicilio() {
+        return Domicilio;
     }
 
-    public void setNombreGarante(String nombreGarante) {
-        this.nombreGarante = nombreGarante;
+    public void setDomicilio(String domicilio) {
+        Domicilio = domicilio;
     }
 
-    public String getTelefonoGarante() {
-        return telefonoGarante;
+    public String getFoto() {
+        return Foto;
     }
 
-    public void setTelefonoGarante(String telefonoGarante) {
-        this.telefonoGarante = telefonoGarante;
+    public void setFoto(String foto) {
+        Foto = foto;
+    }
+
+    @Override
+    public String toString() {
+        return "Inquilino{" +
+                "Id=" + Id +
+                ", Dni=" + Dni +
+                ", Nombre='" + Nombre + '\'' +
+                ", Apellido='" + Apellido + '\'' +
+                ", Telefono='" + Telefono + '\'' +
+                ", Domicilio='" + Domicilio + '\'' +
+                ", Foto='" + Foto + '\'' +
+                '}';
     }
 }
