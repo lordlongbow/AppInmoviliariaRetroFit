@@ -27,7 +27,7 @@ public class ContratosViewModel extends AndroidViewModel {
     private Context contexto;
     private ApiClient ap;
     private MutableLiveData<ArrayList<Inmueble>> inmuebles;
-
+    private MutableLiveData<ArrayList<Contrato>> contratos;
     public ContratosViewModel(@NonNull Application application) {
         super(application);
         this.contexto = contexto;
@@ -41,6 +41,12 @@ public class ContratosViewModel extends AndroidViewModel {
         return inmuebles;
     }
 
+    public LiveData getContratos() {
+        if (contratos == null) {
+            contratos = new MutableLiveData<>();
+        }
+        return contratos;
+    }
 
     /*public void obtenerPropiedadesAlquiladas(){
         ArrayList<Inmueble> propiedades = ap.obtenerPropiedadesAlquiladas();
@@ -50,7 +56,7 @@ public class ContratosViewModel extends AndroidViewModel {
     public void obternrPropiedadesAlquiladas(){
         SharedPreferences token = contexto.getSharedPreferences("token.xml", 0);
         ApiRest.EndPointsApi endPointsApi = ApiRest.getEndPointApi();
-        Call<List<Inmueble>> llamadaAMisInmueblesAlquilados = endPointsApi.misInmuebles(token.getString("token", ""));
+       /* Call<List<Inmueble>> llamadaAMisInmueblesAlquilados = endPointsApi.misInmuebles(token.getString("token", ""));
         llamadaAMisInmueblesAlquilados.enqueue(new Callback<List<Inmueble>>() {
 
             @Override
@@ -66,8 +72,19 @@ public class ContratosViewModel extends AndroidViewModel {
             public void onFailure(Call<List<Inmueble>> call, Throwable t) {
                 Toast.makeText(contexto, "Error al cargar los inmuebles", Toast.LENGTH_SHORT).show();
             }
+        });*/
+        Call <List<Contrato>>llamadaAMisContratos = endPointsApi.getMisContratos(token.getString("token", ""));
+        llamadaAMisContratos.enqueue(new Callback<List<Contrato>>() {
+
+            @Override
+            public void onResponse(Call<List<Contrato>> call, Response<List<Contrato>> response) {
+                contratos.setValue((ArrayList<Contrato>) response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Contrato>> call, Throwable t) {
+                Toast.makeText(contexto, "Error al conseguir los contratos", Toast.LENGTH_SHORT).show();
+            }
         });
-
-
     }
 }

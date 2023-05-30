@@ -2,6 +2,7 @@ package com.example.inmobiliariaac.menu.ui.contratos;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,11 +11,15 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.inmobiliariaac.modelos.Contrato;
-import com.example.inmobiliariaac.modelos.Inmueble;
 import com.example.inmobiliariaac.modelos.Pago;
 import com.example.inmobiliariaac.request.ApiClient;
+import com.example.inmobiliariaac.request.ApiRest;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PagosViewModel extends AndroidViewModel {
         private Context contexto;
@@ -27,7 +32,7 @@ public class PagosViewModel extends AndroidViewModel {
     public PagosViewModel(@NonNull Application application) {
         super(application);
         this.contexto = contexto;
-        this.ap = ApiClient.getApi();
+
     }
 
     public LiveData<ArrayList<Pago>> getListaPagos(){
@@ -38,8 +43,23 @@ public class PagosViewModel extends AndroidViewModel {
     }
 
     public void recuperaPagos(Bundle bundle){
-        ArrayList<Pago> listaPagosRecuperados = ap.obtenerPagos((Contrato) bundle.getSerializable("contrato"));
-        this.listaPagos.setValue(listaPagosRecuperados);
+        SharedPreferences token = contexto.getSharedPreferences("token.xml", 0);
+        ApiRest.EndPointsApi endPointsApi = ApiRest.getEndPointApi();
+        Contrato contratob = (Contrato) bundle.getSerializable("contrato");
+        Call<ArrayList<Pago>> llamadaAGetPagos = endPointsApi.getPagos(token.getString("token", ""), contratob);
+       llamadaAGetPagos.enqueue( new Callback<ArrayList<Pago>>() {
+           @Override
+           public void onResponse(Call<ArrayList<Pago>> call, Response<ArrayList<Pago>> response) {
+               if(response.isSuccessful()){
+                   listaPagos.setValue(response.body());
+               }
+           }
+
+           @Override
+           public void onFailure(Call<ArrayList<Pago>> call, Throwable t) {
+
+           }
+       });
     }
 
 }

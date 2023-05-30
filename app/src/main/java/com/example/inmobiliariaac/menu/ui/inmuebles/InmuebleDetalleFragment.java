@@ -53,14 +53,14 @@ public class InmuebleDetalleFragment extends Fragment {
         mViewModel.getInmueble().observe(getActivity(), new Observer<Inmueble>() {
             @Override
             public void onChanged(Inmueble inmueble) {
-                tvCodigo.setText(inmueble.getIdInmueble() + "");
-                tvHabitaciones.setText(inmueble.getAmbientes() + "");
+                tvCodigo.setText(inmueble.getInmuebleId() + "");
+                tvHabitaciones.setText(inmueble.getCantAambientes() + "");
                 tvDireccion.setText(inmueble.getDireccion());
                 tvPrecio.setText("$ " + inmueble.getPrecio() + "");
                 tvTipo.setText(inmueble.getTipo() + " ");
                 tvUso.setText(inmueble.getUso() + "");
-                cbDisponible.setChecked(inmueble.isEstado());
-                Glide.with(getContext()).load(inmueble.getImagen()).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivImagenInmueble);
+                cbDisponible.setChecked(inmueble.isDisponibilidad());
+                Glide.with(getContext()).load(inmueble.getFoto()).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivImagenInmueble);
             }
 
         });

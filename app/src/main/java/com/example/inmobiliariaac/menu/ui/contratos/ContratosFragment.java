@@ -53,7 +53,7 @@ public class ContratosFragment extends Fragment {
         }
     });
 
-     mViewModel.obtenerPropiedadesAlquiladas();
+     mViewModel.obternrPropiedadesAlquiladas();
     }
 
     @Override

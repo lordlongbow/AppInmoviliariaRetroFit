@@ -53,18 +53,18 @@ private Context contexto;
     mViewModel.getContrato().observe(getActivity(), new Observer<Contrato>() {
         @Override
         public void onChanged(Contrato contrato) {
-            tvCodigo.setText(contrato.getIdContrato() +"");
+            tvCodigo.setText(contrato.getContratoId() +"");
             tvDireccion.setText(contrato.getInmueble().getDireccion());
             tvInquilino.setText(contrato.getInquilino().getNombre() + " " + contrato.getInquilino().getApellido());
             tvFechaInicio.setText(contrato.getFechaInicio());
-            tvFechaFin.setText(contrato.getFechaFin());
+            tvFechaFin.setText(contrato.getFechaFinalizacion());
         }
     });
     btnPagos.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Contrato c = new Contrato();
-            c.setIdContrato(Integer.parseInt(tvCodigo.getText().toString()));
+            c.setContratoId(Integer.parseInt(tvCodigo.getText().toString()));
             Bundle bundle = new Bundle();
             bundle.putSerializable("contrato", c);
 

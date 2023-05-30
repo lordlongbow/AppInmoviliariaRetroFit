@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
@@ -16,10 +15,10 @@ import retrofit2.http.Path;
 
 import com.example.inmobiliariaac.modelos.Contrato;
 import com.example.inmobiliariaac.modelos.Inmueble;
-import com.example.inmobiliariaac.modelos.Inquilino;
 import com.example.inmobiliariaac.modelos.Pago;
 import com.example.inmobiliariaac.modelos.Propietario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ApiRest {
@@ -75,14 +74,14 @@ public class ApiRest {
         //Contrato
 
         @GET("api/contrato/")
-        Call<List<Contrato>> getMisContratos(@Header("Authorization") String token, @Body Inmueble inmueble);
+        Call<List<Contrato>> getMisContratos(@Header("Authorization") String token);
 
         @GET("api/contrato/{id}")
         Call<Contrato> ObtenerContrato(@Header("Authorization") String token, @Path("id") int id);
 
         //Pago
         @GET("api/pago/")
-        Call<List<Pago>> Get(@Header("Authorization") String token, @Body Contrato contrato);
+        Call<ArrayList<Pago>> getPagos(@Header("Authorization") String token, @Body Contrato contrato);
 
     }
 }

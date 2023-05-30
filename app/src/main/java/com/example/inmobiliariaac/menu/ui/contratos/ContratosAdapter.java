@@ -44,7 +44,7 @@ public class ContratosAdapter extends RecyclerView.Adapter<ContratosAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ContratosAdapter.ViewHolder holder, int position) {
         holder.tvDireccion.setText(listaInmuebles.get(position).getDireccion());
-        Glide.with(contexto).load(listaInmuebles.get(position).getImagen()).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.ivImagenContrato);
+        Glide.with(contexto).load(listaInmuebles.get(position).getFoto()).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.ivImagenContrato);
     }
 
     @Override
