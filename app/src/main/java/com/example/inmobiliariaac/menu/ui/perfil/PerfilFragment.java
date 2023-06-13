@@ -8,21 +8,31 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.inmobiliariaac.R;
 import com.example.inmobiliariaac.databinding.FragmentPerfilBinding;
+import com.example.inmobiliariaac.modelos.Inmueble;
 import com.example.inmobiliariaac.modelos.Propietario;
+
+import java.io.Serializable;
 
 public class PerfilFragment extends Fragment {
 
-    private EditText etNombrePerfil, etApellidoPerfil, etTelefonoPerfil, etEmailPerfil, etContrasenaPerfil, etDniPerfil;
+    private EditText etNombrePerfil, etApellidoPerfil, etTelefonoPerfil, etEmailPerfil, etDomicilio, etDniPerfil;
     private Button btnEditarPerfil;
+    private ImageView ivPerfil;
     private PerfilViewModel vm;
 
 
@@ -43,8 +53,10 @@ public class PerfilFragment extends Fragment {
                 etApellidoPerfil.setText(propietario.getApellido());
                 etTelefonoPerfil.setText(propietario.getTelefono());
                 etEmailPerfil.setText(propietario.getEmail());
-                etContrasenaPerfil.setText(propietario.getContraseña());
                 etDniPerfil.setText(String.valueOf(propietario.getDni()));
+                etDomicilio.setText(propietario.getDomicilio());
+                Glide.with(getContext()).load("http://192.168.0.142:5000"+ propietario.getFoto()).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivPerfil);
+
 
             }
         });
@@ -56,15 +68,18 @@ public class PerfilFragment extends Fragment {
              etApellidoPerfil.setEnabled(estado);
              etTelefonoPerfil.setEnabled(estado);
              etEmailPerfil.setEnabled(estado);
-             etContrasenaPerfil.setEnabled(estado);
-             etDniPerfil.setEnabled(estado);}
+             etDniPerfil.setEnabled(estado);
+            etDomicilio.setEnabled(estado);
+            }
         });
+
         vm.getTxtBoton().observe(getViewLifecycleOwner(), new Observer<String>() {
-           @Override
-           public void onChanged(String txtBoton) {
-               btnEditarPerfil.setText(txtBoton);
-           }
+            @Override
+            public void onChanged(String txtBoton) {
+                btnEditarPerfil.setText(txtBoton);
+            }
         });
+
         vm.leerPropietario();
         return root;
     }
@@ -74,8 +89,9 @@ public class PerfilFragment extends Fragment {
         etApellidoPerfil = root.findViewById(R.id.etApellidoPerfil);
         etTelefonoPerfil = root.findViewById(R.id.etTelefonoPerfil);
         etEmailPerfil = root.findViewById(R.id.etEmailPerfil);
-        etContrasenaPerfil = root.findViewById(R.id.etContraseña);
         etDniPerfil = root.findViewById(R.id.etDniPerfil);
+        etDomicilio = root.findViewById(R.id.etDomiciliPerfil);
+        ivPerfil = root.findViewById(R.id.ivPerfil);
         btnEditarPerfil = root.findViewById(R.id.btnPerfil);
 
         btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
@@ -87,12 +103,13 @@ public class PerfilFragment extends Fragment {
                 p.setApellido(etApellidoPerfil.getText().toString());
                 p.setTelefono(etTelefonoPerfil.getText().toString());
                 p.setEmail(etEmailPerfil.getText().toString());
-                p.setContraseña(etContrasenaPerfil.getText().toString());
-                p.setDni(Long.parseLong(etDniPerfil.getText().toString()));
-
+                p.setDni(Integer.parseInt(etDniPerfil.getText().toString()));
+                p.setDomicilio(etDomicilio.getText().toString());
                 String textoBoton = btnEditarPerfil.getText().toString();
 
                 vm.cambioEstadoBoton(textoBoton, p);
+
+
             }
         });
 

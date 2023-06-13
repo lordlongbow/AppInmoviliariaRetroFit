@@ -1,75 +1,76 @@
 package com.example.inmobiliariaac.modelos;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Pago {
 
-    private int PagoId;
-    private float Monto;
-    private Contrato Contrato;
-    private Date Fecha;
-    private int ContratoId;
+    private int pagoId;
+    private float monto;
+    private Contrato contrato;
+    private String fecha;
+    private int contratoId;
 
     public Pago() {
     }
 
-    public Pago(int pagoId, float monto, com.example.inmobiliariaac.modelos.Contrato contrato, Date fecha, int contratoId) {
-        PagoId = pagoId;
-        Monto = monto;
-        Contrato = contrato;
-        Fecha = fecha;
-        ContratoId = contratoId;
+    public Pago(int pagoId, float monto, Contrato contrato, String  fecha, int contratoId) {
+        this.pagoId = pagoId;
+        this.monto = monto;
+        this.contrato = contrato;
+        this.fecha = fecha;
+        this.contratoId = contratoId;
     }
 
-
     public int getPagoId() {
-        return PagoId;
+        return pagoId;
     }
 
     public void setPagoId(int pagoId) {
-        PagoId = pagoId;
+        this.pagoId = pagoId;
     }
 
     public float getMonto() {
-        return Monto;
+        return monto;
     }
 
     public void setMonto(float monto) {
-        Monto = monto;
+        this.monto = monto;
     }
 
-    public com.example.inmobiliariaac.modelos.Contrato getContrato() {
-        return Contrato;
+    public Contrato getContrato() {
+        return contrato;
     }
 
-    public void setContrato(com.example.inmobiliariaac.modelos.Contrato contrato) {
-        Contrato = contrato;
+    public void setContrato(Contrato contrato) {
+        this.contrato = contrato;
     }
 
-    public Date getFecha() {
-        return Fecha;
+    public String  getFecha() {
+        return fecha;
     }
 
-    public void setFecha(Date fecha) {
-        Fecha = fecha;
+    public void setFecha(String  fecha) {
+        this.fecha = fecha;
     }
 
     public int getContratoId() {
-        return ContratoId;
+        return contratoId;
     }
 
     public void setContratoId(int contratoId) {
-        ContratoId = contratoId;
+        this.contratoId = contratoId;
     }
 
     @Override
     public String toString() {
         return "Pago{" +
-                "PagoId=" + PagoId +
-                ", Monto=" + Monto +
-                ", Contrato=" + Contrato +
-                ", Fecha=" + Fecha +
-                ", ContratoId=" + ContratoId +
+                "pagoId=" + pagoId +
+                ", monto=" + monto +
+                ", contrato=" + contrato +
+                ", fecha=" + fecha +
+                ", contratoId=" + contratoId +
                 '}';
     }
 }

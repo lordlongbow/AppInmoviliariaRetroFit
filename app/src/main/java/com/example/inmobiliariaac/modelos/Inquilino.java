@@ -2,92 +2,93 @@ package com.example.inmobiliariaac.modelos;
 
 public class Inquilino {
 
-    private int Id;
-    private Long Dni;
-    private String Nombre;
-    private String Apellido;
-    private String Telefono;
-    private String Domicilio;
-    private String Foto;
+    private int id;
+    private Long dni;
+    private String nombre;
+    private String apellido;
+    private String telefono;
+    private String domicilio;
+    private String foto;
 
-    public Inquilino() {}
+    public Inquilino() {
+    }
 
     public Inquilino(int id, Long dni, String nombre, String apellido, String telefono, String domicilio, String foto) {
-        Id = id;
-        Dni = dni;
-        Nombre = nombre;
-        Apellido = apellido;
-        Telefono = telefono;
-        Domicilio = domicilio;
-        Foto = foto;
+        this.id = id;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.domicilio = domicilio;
+        this.foto = foto;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public Long getDni() {
-        return Dni;
+        return dni;
     }
 
     public void setDni(Long dni) {
-        Dni = dni;
+        this.dni = dni;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
 
     public String getApellido() {
-        return Apellido;
+        return apellido;
     }
 
     public void setApellido(String apellido) {
-        Apellido = apellido;
+        this.apellido = apellido;
     }
 
     public String getTelefono() {
-        return Telefono;
+        return telefono;
     }
 
     public void setTelefono(String telefono) {
-        Telefono = telefono;
+        this.telefono = telefono;
     }
 
     public String getDomicilio() {
-        return Domicilio;
+        return domicilio;
     }
 
     public void setDomicilio(String domicilio) {
-        Domicilio = domicilio;
+        this.domicilio = domicilio;
     }
 
     public String getFoto() {
-        return Foto;
+        return foto;
     }
 
     public void setFoto(String foto) {
-        Foto = foto;
+        this.foto = foto;
     }
 
     @Override
     public String toString() {
         return "Inquilino{" +
-                "Id=" + Id +
-                ", Dni=" + Dni +
-                ", Nombre='" + Nombre + '\'' +
-                ", Apellido='" + Apellido + '\'' +
-                ", Telefono='" + Telefono + '\'' +
-                ", Domicilio='" + Domicilio + '\'' +
-                ", Foto='" + Foto + '\'' +
+                "id=" + id +
+                ", dni=" + dni +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", domicilio='" + domicilio + '\'' +
+                ", foto='" + foto + '\'' +
                 '}';
     }
 }

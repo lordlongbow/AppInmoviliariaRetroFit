@@ -39,23 +39,28 @@ public class InmueblesViewModel extends AndroidViewModel {
     public InmueblesViewModel(@NonNull Application application) {
         super(application);
         contexto=application.getApplicationContext();
+
     }
 
     public void obtenerInmuebles(){
         SharedPreferences token = contexto.getSharedPreferences("token.xml", 0);
         ApiRest.EndPointsApi endPointsApi = ApiRest.getEndPointApi();
-        Call<List<Inmueble>> llamadaAMisInmuebles = endPointsApi.misInmuebles(token.toString());
+        Call<List<Inmueble>> llamadaAMisInmuebles = endPointsApi.misInmuebles(token.getString("token", ""));
         llamadaAMisInmuebles.enqueue(new Callback<List<Inmueble>>() {
 
             @Override
             public void onResponse(Call<List<Inmueble>> call, Response<List<Inmueble>> response) {
                 if(response.isSuccessful()){
                     if(response.body()!=null){
-                        inmuebles.setValue((ArrayList<Inmueble>) response.body());
+                        inmuebles.postValue((ArrayList<Inmueble>) response.body());
+                        Log.d("salida", response.body().get(0).toString());
 
                         Log.d("Inmuebles", inmuebles.toString());
 
                     }
+
+                    Log.d("Inmuebles", inmuebles.toString());
+
                 }
             }
 

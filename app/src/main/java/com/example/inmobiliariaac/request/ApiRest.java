@@ -1,5 +1,6 @@
 package com.example.inmobiliariaac.request;
 
+import com.example.inmobiliariaac.modelos.Usuario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -18,11 +19,10 @@ import com.example.inmobiliariaac.modelos.Inmueble;
 import com.example.inmobiliariaac.modelos.Pago;
 import com.example.inmobiliariaac.modelos.Propietario;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ApiRest {
-    private static final String URL_BASE = "http://38.0.101.76:8080/";
+    private static final String URL_BASE = "http://192.168.0.142:5000/";
     //Intentar guardar ip en una variable tipo secret consultar
     private final String URL_BASE_LOCAL = "http://38.0.101.76:8080/";
 
@@ -47,29 +47,21 @@ public class ApiRest {
         //Propietario
 
         @POST("api/propietario/login")
-        Call<String> login(@Body Propietario propietario);
+        Call<String> login(@Body Usuario propietario);
 
         @GET("api/propietario/perfil")
         Call<Propietario> perfil(@Header("Authorization") String token);
 
-        @PUT("api/propietario/actualizar/{id}")
-        Call<Propietario> actualizar(@Header("Authorization") String token, @Path("id") int id, @Body Propietario propietario);
-        /*
-        encontrar equivalenete a iformfile o mandar foto como bitmap
-        @PUT("api/propietario/actualizar/foto/{id}")
-        Call<String> actualizarFoto(@Header("Authorization") String token, @Path("id") int id, @Body Propietario propietario);
-        */
-
-        @PUT("api/propietario/cambiocontraseña/{id}")
-        Call<String> cambiocontraseña(@Header("Authorization") String token, @Body Propietario propietario);
+        @PUT("api/propietario/actualizar")
+        Call<Propietario> ActualizarPerfil(@Header("Authorization") String token, @Body Propietario propietario);
 
         //Inmueble
 
-        @GET("api/inmueble/")
+        @GET("api/inmueble")
         Call<List<Inmueble>> misInmuebles(@Header("Authorization") String token);
 
-        @PUT("api/inmueble/cambioDisponibilidad/{id}")
-        Call<Inmueble> cambioDisponibilidad(@Header("Authorization") String token, @Path("id") int id, @Body Inmueble inmueble);
+        @PUT("api/inmueble/{id}")
+        Call<Inmueble> cambioDisponibilidad(@Header("Authorization") String token, @Path("id") int id);
 
         //Contrato
 
@@ -80,8 +72,8 @@ public class ApiRest {
         Call<Contrato> ObtenerContrato(@Header("Authorization") String token, @Path("id") int id);
 
         //Pago
-        @GET("api/pago/")
-        Call<ArrayList<Pago>> getPagos(@Header("Authorization") String token, @Body Contrato contrato);
+        @GET("api/pago/{id_contrato}")
+        Call<List<Pago>> ObtenerPagos(@Header("Authorization") String token, @Path("id_contrato") int id);
 
     }
 }

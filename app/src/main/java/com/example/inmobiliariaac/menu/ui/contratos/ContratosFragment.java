@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 
 import com.example.inmobiliariaac.R;
 import com.example.inmobiliariaac.menu.ui.inmuebles.InmueblesViewModel;
+import com.example.inmobiliariaac.modelos.Contrato;
 import com.example.inmobiliariaac.modelos.Inmueble;
 
 import java.util.ArrayList;
@@ -43,12 +44,12 @@ public class ContratosFragment extends Fragment {
     private void ContratosFragmentInit(View root) {
     rv = root.findViewById(R.id.rvRecyclerContratos);
     mViewModel = new ViewModelProvider(this).get(ContratosViewModel.class);
-    mViewModel.getInmuebles().observe(getViewLifecycleOwner(), new Observer<ArrayList<Inmueble>>() {
+    mViewModel.getContratos().observe(getViewLifecycleOwner(), new Observer<ArrayList<Contrato>>() {
         @Override
-        public void onChanged(ArrayList<Inmueble> inmuebles) {
+        public void onChanged(ArrayList<Contrato> contratos) {
             GridLayoutManager glm = new GridLayoutManager(contexto, 1, GridLayoutManager.VERTICAL, false);
             rv.setLayoutManager(glm);
-            adapter = new ContratosAdapter(contexto, inmuebles, getLayoutInflater());
+            adapter = new ContratosAdapter(contexto, contratos, getLayoutInflater());
             rv.setAdapter(adapter);
         }
     });

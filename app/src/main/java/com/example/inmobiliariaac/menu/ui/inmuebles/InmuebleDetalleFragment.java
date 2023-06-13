@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,6 +41,7 @@ public class InmuebleDetalleFragment extends Fragment {
         return root;
     }
 
+
     private void InmuebleFragmentInit(View root) {
         tvCodigo = root.findViewById(R.id.tvCodigoInmueble);
         tvHabitaciones = root.findViewById(R.id.tvHabitacionesInmueble);
@@ -54,13 +56,28 @@ public class InmuebleDetalleFragment extends Fragment {
             @Override
             public void onChanged(Inmueble inmueble) {
                 tvCodigo.setText(inmueble.getInmuebleId() + "");
-                tvHabitaciones.setText(inmueble.getCantAambientes() + "");
+                tvHabitaciones.setText(inmueble.getCantAmbientes() + "");
                 tvDireccion.setText(inmueble.getDireccion());
                 tvPrecio.setText("$ " + inmueble.getPrecio() + "");
-                tvTipo.setText(inmueble.getTipo() + " ");
-                tvUso.setText(inmueble.getUso() + "");
+                tvTipo.setText(inmueble.getTipo().getDescripcion() + " ");
+                tvUso.setText(inmueble.getUso().getDescripcion() + "");
                 cbDisponible.setChecked(inmueble.isDisponibilidad());
-                Glide.with(getContext()).load(inmueble.getFoto()).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivImagenInmueble);
+                Glide.with(getContext()).load("http://192.168.0.142:5000" + inmueble.getFoto()).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivImagenInmueble);
+
+
+               /* mViewModel.getCheckBox().observe(getActivity(), new Observer<CheckBox>() {
+                    @Override
+                    public void onChanged(CheckBox checkBox) {
+                        mViewModel.disponible(inmueble);
+                    }
+                });*/
+
+                cbDisponible.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        mViewModel.disponible(inmueble);
+                    }
+                });
             }
 
         });

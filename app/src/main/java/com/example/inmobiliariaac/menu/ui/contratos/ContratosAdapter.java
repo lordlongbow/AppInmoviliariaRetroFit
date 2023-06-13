@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,12 +25,12 @@ import java.util.ArrayList;
 
 public class ContratosAdapter extends RecyclerView.Adapter<ContratosAdapter.ViewHolder>{
     private Context contexto;
-    private ArrayList<Inmueble> listaInmuebles;
+    private ArrayList<Contrato> listaContrato;
     private LayoutInflater li;
 
-    public ContratosAdapter(Context contexto, ArrayList<Inmueble> listaInmuebles, LayoutInflater li) {
+    public ContratosAdapter(Context contexto, ArrayList<Contrato> listaContrato, LayoutInflater li) {
         this.contexto = contexto;
-        this.listaInmuebles = listaInmuebles;
+        this.listaContrato = listaContrato;
         this.li = li;
     }
 
@@ -43,13 +44,13 @@ public class ContratosAdapter extends RecyclerView.Adapter<ContratosAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ContratosAdapter.ViewHolder holder, int position) {
-        holder.tvDireccion.setText(listaInmuebles.get(position).getDireccion());
-        Glide.with(contexto).load(listaInmuebles.get(position).getFoto()).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.ivImagenContrato);
+        holder.tvDireccion.setText(listaContrato.get(position).getInmueble().getDireccion());
+        Glide.with(contexto).load("http://192.168.0.142:5000"+listaContrato.get(position).getInmueble().getFoto()).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.ivImagenContrato);
     }
 
     @Override
     public int getItemCount() {
-        return listaInmuebles.size();
+        return listaContrato.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -65,10 +66,13 @@ public class ContratosAdapter extends RecyclerView.Adapter<ContratosAdapter.View
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                Inmueble i = listaInmuebles.get(getAdapterPosition());
-                bundle.putSerializable("inmueble", i);
-                Navigation.findNavController((Activity) contexto, R.id.nav_host_fragment_content_menu ).navigate(R.id.contratoDetalleFragment, bundle);           }
-        });
+                Contrato i = listaContrato.get(getAdapterPosition());
+                bundle.putSerializable("contrato", i);
+                NavController nc = Navigation.findNavController(v);
+                nc.navigate(R.id.contratoDetalleFragment, bundle);
+                //Navigation.findNavController((Activity) contexto, R.id.nav_host_fragment_content_menu ).navigate(R.id.contratoDetalleFragment, bundle);           }
         }
+        });
     }
+}
 }

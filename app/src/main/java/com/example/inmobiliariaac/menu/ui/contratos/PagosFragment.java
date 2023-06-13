@@ -46,13 +46,13 @@ public class PagosFragment extends Fragment {
     mViewModel.getListaPagos().observe(getViewLifecycleOwner(), new Observer<ArrayList<Pago>>() {
         @Override
         public void onChanged(ArrayList<Pago> pago) {
-            GridLayoutManager glm = new GridLayoutManager(Contexto, 1, GridLayoutManager.VERTICAL, false);
+            GridLayoutManager glm = new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false);
             rv.setLayoutManager(glm);
-            adapter = new PagosAdapter(Contexto, pago, getLayoutInflater());
+            adapter = new PagosAdapter(getContext(), pago, getLayoutInflater());
             rv.setAdapter(adapter);
         }
     });
-mViewModel.recuperaPagos(getArguments());
+                mViewModel.recuperaPagos(getArguments());
     }
 
 

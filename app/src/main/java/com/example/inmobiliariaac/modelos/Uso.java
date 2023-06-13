@@ -1,36 +1,38 @@
 package com.example.inmobiliariaac.modelos;
 
 public class Uso {
-    private int UsoId;
-    private String Descripcion;
-public Uso(){}
+    private int usoId;
+    private String descripcion;
 
     public Uso(int usoId, String descripcion) {
-        UsoId = usoId;
-        Descripcion = descripcion;
+        this.usoId = usoId;
+        this.descripcion = descripcion;
+    }
+
+    public Uso() {
     }
 
     public int getUsoId() {
-        return UsoId;
+        return usoId;
     }
 
     public void setUsoId(int usoId) {
-        UsoId = usoId;
+        this.usoId = usoId;
     }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
-        Descripcion = descripcion;
+        this.descripcion = descripcion;
     }
 
     @Override
     public String toString() {
         return "Uso{" +
-                "UsoId=" + UsoId +
-                ", Descripcion='" + Descripcion + '\'' +
+                "usoId=" + usoId +
+                ", descripcion='" + descripcion + '\'' +
                 '}';
     }
 }

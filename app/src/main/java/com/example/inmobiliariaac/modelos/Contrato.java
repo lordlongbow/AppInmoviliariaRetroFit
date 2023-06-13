@@ -5,9 +5,9 @@ import java.util.Objects;
 
 public class Contrato implements Serializable {
 
-    private int ContratoId;
-    private String FechaInicio;
-    private String FechaFinalizacion;
+    private int contratoId;
+    private String fechaInicio;
+    private String fechaFinalizacion;
     private Inquilino inquilino;
     private Inmueble inmueble;
 
@@ -16,36 +16,39 @@ public class Contrato implements Serializable {
 
     }
 
-    public Contrato(int contratoId, String fechaInicio, String fechaFinalizacion, Inquilino inquilino, Inmueble inmueble) {
-        ContratoId = contratoId;
-        FechaInicio = fechaInicio;
-        FechaFinalizacion = fechaFinalizacion;
-        this.inquilino = inquilino;
-        this.inmueble = inmueble;
+    @Override
+    public String toString() {
+        return "Contrato{" +
+                "contratoId=" + contratoId +
+                ", fechaInicio='" + fechaInicio + '\'' +
+                ", fechaFinalizacion='" + fechaFinalizacion + '\'' +
+                ", inquilino=" + inquilino +
+                ", inmueble=" + inmueble +
+                '}';
     }
 
     public int getContratoId() {
-        return ContratoId;
+        return contratoId;
     }
 
     public void setContratoId(int contratoId) {
-        ContratoId = contratoId;
+        this.contratoId = contratoId;
     }
 
     public String getFechaInicio() {
-        return FechaInicio;
+        return fechaInicio;
     }
 
     public void setFechaInicio(String fechaInicio) {
-        FechaInicio = fechaInicio;
+        this.fechaInicio = fechaInicio;
     }
 
     public String getFechaFinalizacion() {
-        return FechaFinalizacion;
+        return fechaFinalizacion;
     }
 
     public void setFechaFinalizacion(String fechaFinalizacion) {
-        FechaFinalizacion = fechaFinalizacion;
+        this.fechaFinalizacion = fechaFinalizacion;
     }
 
     public Inquilino getInquilino() {
@@ -64,14 +67,11 @@ public class Contrato implements Serializable {
         this.inmueble = inmueble;
     }
 
-    @Override
-    public String toString() {
-        return "Contrato{" +
-                "ContratoId=" + ContratoId +
-                ", FechaInicio='" + FechaInicio + '\'' +
-                ", FechaFinalizacion='" + FechaFinalizacion + '\'' +
-                ", inquilino=" + inquilino +
-                ", inmueble=" + inmueble +
-                '}';
+    public Contrato(int contratoId, String fechaInicio, String fechaFinalizacion, Inquilino inquilino, Inmueble inmueble) {
+        this.contratoId = contratoId;
+        this.fechaInicio = fechaInicio;
+        this.fechaFinalizacion = fechaFinalizacion;
+        this.inquilino = inquilino;
+        this.inmueble = inmueble;
     }
 }

@@ -30,7 +30,7 @@ public class ContratosViewModel extends AndroidViewModel {
     private MutableLiveData<ArrayList<Contrato>> contratos;
     public ContratosViewModel(@NonNull Application application) {
         super(application);
-        this.contexto = contexto;
+       contexto = application.getApplicationContext();
 
     }
 
@@ -41,7 +41,7 @@ public class ContratosViewModel extends AndroidViewModel {
         return inmuebles;
     }
 
-    public LiveData getContratos() {
+    public MutableLiveData<ArrayList<Contrato>> getContratos() {
         if (contratos == null) {
             contratos = new MutableLiveData<>();
         }
@@ -78,7 +78,7 @@ public class ContratosViewModel extends AndroidViewModel {
 
             @Override
             public void onResponse(Call<List<Contrato>> call, Response<List<Contrato>> response) {
-                contratos.setValue((ArrayList<Contrato>) response.body());
+                contratos.postValue((ArrayList<Contrato>) response.body());
             }
 
             @Override

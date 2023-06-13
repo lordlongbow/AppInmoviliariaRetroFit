@@ -4,104 +4,114 @@ import java.util.Objects;
 
 public class Propietario {
 
-    private int Id;
-    private Long Dni;
-    private String Nombre;
-    private String Apellido;
-    private String Email;
-    private String Contraseña;
-    private String Telefono;
-    private String Foto;
+    private int id;
+    private int dni;
+    private String nombre;
+    private String apellido;
+    private String email;
+    private String contraseña;
+    private String domicilio;
+    private String telefono;
+    private String foto;
 
     public Propietario() {
     }
 
-    public Propietario(int id, Long dni, String nombre, String apellido, String email, String contraseña, String telefono, String foto) {
-        Id = id;
-        Dni = dni;
-        Nombre = nombre;
-        Apellido = apellido;
-        Email = email;
-        Contraseña = contraseña;
-        Telefono = telefono;
-        Foto = foto;
+    public Propietario(int id, int dni, String nombre, String apellido, String email, String contraseña, String domicilio, String telefono, String foto) {
+        this.id = id;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.contraseña = contraseña;
+        this.domicilio = domicilio;
+        this.telefono = telefono;
+        this.foto = foto;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
-    public Long getDni() {
-        return Dni;
+    public int getDni() {
+        return dni;
     }
 
-    public void setDni(Long dni) {
-        Dni = dni;
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
 
     public String getApellido() {
-        return Apellido;
+        return apellido;
     }
 
     public void setApellido(String apellido) {
-        Apellido = apellido;
+        this.apellido = apellido;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getContraseña() {
-        return Contraseña;
+        return contraseña;
     }
 
     public void setContraseña(String contraseña) {
-        Contraseña = contraseña;
+        this.contraseña = contraseña;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
     }
 
     public String getTelefono() {
-        return Telefono;
+        return telefono;
     }
 
     public void setTelefono(String telefono) {
-        Telefono = telefono;
+        this.telefono = telefono;
     }
 
     public String getFoto() {
-        return Foto;
+        return foto;
     }
 
     public void setFoto(String foto) {
-        Foto = foto;
+        this.foto = foto;
     }
 
     @Override
     public String toString() {
         return "Propietario{" +
-                "Id=" + Id +
-                ", Dni=" + Dni +
-                ", Nombre='" + Nombre + '\'' +
-                ", Apellido='" + Apellido + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Contraseña='" + Contraseña + '\'' +
-                ", Telefono='" + Telefono + '\'' +
-                ", Foto='" + Foto + '\'' +
+                "Id=" + id +
+                ", Dni=" + dni +
+                ", Nombre='" + nombre + '\'' +
+                ", Apellido='" + apellido + '\'' +
+                ", Email='" + email + '\'' +
+                ", Contraseña='" + contraseña + '\'' +
+                ", Telefono='" + telefono + '\'' +
+                ", Foto='" + foto + '\'' +
                 '}';
     }
 
@@ -110,11 +120,11 @@ public class Propietario {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Propietario that = (Propietario) o;
-        return Id == that.Id && Objects.equals(Dni, that.Dni) && Objects.equals(Nombre, that.Nombre) && Objects.equals(Apellido, that.Apellido) && Objects.equals(Email, that.Email) && Objects.equals(Contraseña, that.Contraseña) && Objects.equals(Telefono, that.Telefono) && Objects.equals(Foto, that.Foto);
+        return id == that.id && Objects.equals(dni, that.dni) && Objects.equals(nombre, that.nombre) && Objects.equals(apellido, that.apellido) && Objects.equals(email, that.email) && Objects.equals(contraseña, that.contraseña) && Objects.equals(telefono, that.telefono) && Objects.equals(foto, that.foto);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, Dni, Nombre, Apellido, Email, Contraseña, Telefono, Foto);
+        return Objects.hash(id, dni, nombre, apellido, email, contraseña, telefono, foto);
     }
 }

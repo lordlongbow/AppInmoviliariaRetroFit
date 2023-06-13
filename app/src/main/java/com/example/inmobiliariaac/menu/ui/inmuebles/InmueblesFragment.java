@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import android.view.ViewGroup;
 import com.example.inmobiliariaac.R;
 import com.example.inmobiliariaac.modelos.Inmueble;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InmueblesFragment extends Fragment {
@@ -42,14 +44,18 @@ public class InmueblesFragment extends Fragment {
         rv = root.findViewById(R.id.rvRecyclerView);
         inmueblesViewModel = new ViewModelProvider(this).get(InmueblesViewModel.class);
 
-        inmueblesViewModel.getInmuebles().observe(getViewLifecycleOwner(), (Observer)(inmuebles)-> {
+        inmueblesViewModel.getInmuebles().observe(getViewLifecycleOwner(), new Observer<ArrayList<Inmueble>>() {
+            @Override
+            public void onChanged(ArrayList<Inmueble> inmuebles) {
+                Log.d("inmubebles", inmuebles + "");
+                GridLayoutManager glm=new GridLayoutManager(contexto,1, RecyclerView.VERTICAL,false);
+                rv.setLayoutManager(glm);
+                adapter = new InmuebleAdapter(contexto, inmuebles, getLayoutInflater());
+                rv.setAdapter(adapter);
 
-               GridLayoutManager glm=new GridLayoutManager(contexto,1, RecyclerView.VERTICAL,false);
-               rv.setLayoutManager(glm);
-               adapter = new InmuebleAdapter(contexto, (List<Inmueble>) inmuebles, getLayoutInflater());
-               rv.setAdapter(adapter);
+            }
+        } );
 
-       } );
         inmueblesViewModel.obtenerInmuebles();
 
     }

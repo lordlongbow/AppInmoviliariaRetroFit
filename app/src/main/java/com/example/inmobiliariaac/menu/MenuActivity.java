@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.inmobiliariaac.R;
@@ -46,6 +47,7 @@ public class MenuActivity extends AppCompatActivity {
         View headerView = binding.navView.getHeaderView(0);
         TextView tvPLNombre = headerView.findViewById(R.id.tvNombreEncabezado);
         TextView tvPLEmail = headerView.findViewById(R.id.tvEmailEncabezado);
+
 
         tvPLNombre.setText(nombre);
         tvPLEmail.setText(email);

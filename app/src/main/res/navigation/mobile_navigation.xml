@@ -8,17 +8,17 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.inmobiliariaac.menu.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="Mapa"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/perfilFragment"
         android:name="com.example.inmobiliariaac.menu.ui.perfil.PerfilFragment"
-        android:label="fragment_perfil"
+        android:label="Mi Perfil"
         tools:layout="@layout/fragment_perfil" />
     <fragment
         android:id="@+id/inmueblesFragment"
         android:name="com.example.inmobiliariaac.menu.ui.inmuebles.InmueblesFragment"
-        android:label="fragment_Inmuebles"
+        android:label="Mis Inmuebles"
         tools:layout="@layout/fragment_inmuebles" >
         <action
             android:id="@+id/action_inmueblesFragment_to_inmuebleDetalleFragment"
@@ -27,12 +27,12 @@
     <fragment
         android:id="@+id/logoutFragment"
         android:name="com.example.inmobiliariaac.menu.ui.logout.LogoutFragment"
-        android:label="fragment_logout"
+        android:label="LogOut"
         tools:layout="@layout/fragment_logout" />
     <fragment
         android:id="@+id/inmuebleDetalleFragment"
         android:name="com.example.inmobiliariaac.menu.ui.inmuebles.InmuebleDetalleFragment"
-        android:label="fragment_inmueble_detalle"
+        android:label="Detalle de Inmueble"
         tools:layout="@layout/fragment_inmueble_detalle" >
         <action
             android:id="@+id/action_inmuebleDetalleFragment_to_inmueblesFragment"
@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/contratosFragment"
         android:name="com.example.inmobiliariaac.menu.ui.contratos.ContratosFragment"
-        android:label="fragment_contratos"
+        android:label="Mis Contratos"
         tools:layout="@layout/fragment_contratos" >
         <action
             android:id="@+id/action_contratosFragment_to_contratoDetalleFragment"
@@ -50,7 +50,7 @@
     <fragment
         android:id="@+id/contratoDetalleFragment"
         android:name="com.example.inmobiliariaac.menu.ui.contratos.ContratoDetalleFragment"
-        android:label="fragment_contrato_detalle"
+        android:label="Detalle de Contrato"
         tools:layout="@layout/fragment_contrato_detalle" >
         <action
             android:id="@+id/action_contratoDetalleFragment_to_contratosFragment"
@@ -62,7 +62,7 @@
     <fragment
         android:id="@+id/pagosFragment"
         android:name="com.example.inmobiliariaac.menu.ui.contratos.PagosFragment"
-        android:label="fragment_pagos"
+        android:label="Pagos de Contrato"
         tools:layout="@layout/fragment_pagos" >
         <action
             android:id="@+id/action_pagosFragment_to_contratoDetalleFragment"
